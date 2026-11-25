@@ -1,0 +1,127 @@
+{
+  "_note": "Made-up data for demonstration. Brands, publications and URLs are invented.",
+  "trends": [
+    {"id": "T1", "name": "Quiet utility outerwear", "status": "watching", "momentum": "below_threshold"},
+    {"id": "T2", "name": "Comfort-first tailoring", "status": "watching", "momentum": "below_threshold"},
+    {"id": "T3", "name": "Investment-piece buying", "status": "confirmed", "momentum": "rising"}
+  ],
+  "themes": [
+    {"id": "TH1", "name": "Trench as a year-round layer", "trend_id": "T1"},
+    {"id": "TH2", "name": "Tailored waistcoat worn on its own", "trend_id": "T1"},
+    {"id": "TH3", "name": "Soft-shoulder blazers", "trend_id": "T2"},
+    {"id": "TH4", "name": "Cost-per-wear framing in coat marketing", "trend_id": "T3"}
+  ],
+  "signals": [
+    {
+      "id": "S1", "title": "Atelier Nord launches a lightweight unlined trench for spring and autumn",
+      "url": "https://ateliernord.example.com/news/unlined-trench",
+      "event_date": "2026-11-03", "first_seen": "2026-11-04", "story_key": "atelier-nord-unlined-trench",
+      "players": ["Atelier Nord"], "sectors": ["fashion"], "markets": ["FR"], "theme_id": "TH1",
+      "sources": [
+        {"name": "Atelier Nord product page", "url": "https://ateliernord.example.com/trench", "origin": "Atelier Nord", "kind": "primary", "markets": ["FR"]}
+      ]
+    },
+    {
+      "id": "S2", "title": "Paris street-style reports show trenches worn over knitwear in November",
+      "url": "https://modeparis.example.org/street-style-november",
+      "event_date": "2026-11-06", "first_seen": "2026-11-07", "story_key": "paris-street-style-trench-november",
+      "players": ["Mode Paris Hebdo"], "sectors": ["styling"], "markets": ["FR"], "theme_id": "TH1",
+      "sources": [
+        {"name": "Mode Paris Hebdo", "url": "https://modeparis.example.org/street-style-november", "origin": "Mode Paris Hebdo"},
+        {"name": "Rue Style Journal", "url": "https://ruestyle.example.org/trench", "origin": "Rue Style Journal"}
+      ]
+    },
+    {
+      "id": "S3", "title": "Maison Exemple adds a waistcoat-only capsule to its autumn line",
+      "url": "https://maisonexemple.example.com/capsule-gilet",
+      "event_date": "2026-11-10", "first_seen": "2026-11-11", "story_key": "maison-exemple-waistcoat-capsule",
+      "players": ["Maison Exemple"], "sectors": ["fashion"], "markets": ["FR", "PL"], "theme_id": "TH2",
+      "sources": [
+        {"name": "Maison Exemple press release", "url": "https://maisonexemple.example.com/press", "origin": "Maison Exemple", "kind": "primary"},
+        {"name": "Fashion Wire FR (rewrites the press release)", "url": "https://fashionwire.example.org/1", "origin": "Maison Exemple"},
+        {"name": "Moda Tydzień", "url": "https://modatydzien.example.org/kamizelka", "origin": "Moda Tydzień", "markets": ["PL"]}
+      ]
+    },
+    {
+      "id": "S4", "title": "Studio Vistule opens pre-orders for a belted utility trench in Warsaw",
+      "url": "https://studiovistule.example.com/pl/trench-utility",
+      "event_date": "2026-11-14", "first_seen": "2026-11-19", "story_key": "studio-vistule-utility-trench",
+      "players": ["Studio Vistule"], "sectors": ["fashion"], "markets": ["PL"], "theme_id": "TH1",
+      "sources": [
+        {"name": "Studio Vistule shop", "url": "https://studiovistule.example.com/pl/trench-utility", "origin": "Studio Vistule", "kind": "primary", "markets": ["PL"]},
+        {"name": "Moda Tydzień", "url": "https://modatydzien.example.org/trench", "origin": "Moda Tydzień", "markets": ["PL"]},
+        {"name": "Warsaw Style Notes", "url": "https://warsawstyle.example.org/trench", "origin": "Warsaw Style Notes", "markets": ["PL"]}
+      ]
+    },
+    {
+      "id": "S5", "title": "Waistcoat styling searches climb on a visual-discovery platform in France",
+      "url": "https://trends.example.com/fr/waistcoat-outfit",
+      "event_date": "2026-11-18", "first_seen": "2026-11-21", "story_key": "fr-waistcoat-styling-search-rise",
+      "players": ["Halden Wool", "Mode Paris Hebdo"], "sectors": ["styling"], "audiences": ["premium 25+"], "markets": ["FR"], "theme_id": "TH2",
+      "sources": [
+        {"name": "Visual platform trends tool (FR, 30 days)", "url": "https://trends.example.com/fr/waistcoat-outfit", "origin": "Trends tool", "kind": "primary", "quantitative": true, "markets": ["FR"], "period_days": 30},
+        {"name": "Halden Wool lookbook", "url": "https://haldenwool.example.com/lookbook", "origin": "Halden Wool", "kind": "primary"},
+        {"name": "Mode Paris Hebdo", "url": "https://modeparis.example.org/gilet", "origin": "Mode Paris Hebdo"}
+      ]
+    },
+    {
+      "id": "S6", "title": "Search interest in short trench coats rises in both France and Poland",
+      "url": "https://search-trends.example.com/short-trench",
+      "event_date": "2026-11-21", "first_seen": "2026-11-24", "story_key": "fr-pl-short-trench-search",
+      "players": ["Riva Concept"], "sectors": ["fashion"], "audiences": ["young high spenders"], "markets": ["FR", "PL"], "theme_id": "TH1",
+      "sources": [
+        {"name": "Search trends tool (FR + PL, 90 days)", "url": "https://search-trends.example.com/short-trench", "origin": "Search trends tool", "kind": "primary", "quantitative": true, "markets": ["FR", "PL"], "period_days": 90},
+        {"name": "Riva Concept new-in page", "url": "https://rivaconcept.example.com/new", "origin": "Riva Concept", "kind": "primary"},
+        {"name": "Rue Style Journal", "url": "https://ruestyle.example.org/short-trench", "origin": "Rue Style Journal"}
+      ]
+    },
+    {
+      "id": "S7", "title": "Halden Wool reworks blazers with dropped, soft shoulders",
+      "url": "https://haldenwool.example.com/blazers",
+      "event_date": "2026-11-12", "first_seen": "2026-11-13", "story_key": "halden-soft-shoulder-blazer",
+      "players": ["Halden Wool"], "sectors": ["fashion"], "markets": ["Europe"], "theme_id": "TH3",
+      "sources": [{"name": "Halden Wool", "url": "https://haldenwool.example.com/blazers", "origin": "Halden Wool", "kind": "primary"}]
+    },
+    {
+      "id": "S8", "title": "Shoppers ask for blazers they can wear all day without structure",
+      "url": "https://forum.example.org/threads/unstructured-blazer",
+      "event_date": "2026-11-15", "first_seen": "2026-11-16", "story_key": "forum-unstructured-blazer",
+      "players": ["Forum users"], "sectors": ["outfits"], "markets": ["FR"], "theme_id": "TH3",
+      "sources": [{"name": "Shopping forum thread", "url": "https://forum.example.org/threads/unstructured-blazer", "origin": "Shopping forum"}]
+    },
+    {
+      "id": "S9", "title": "Coat retailer adds cost-per-wear calculator to product pages",
+      "url": "https://coatco.example.com/cost-per-wear",
+      "event_date": "2026-11-17", "first_seen": "2026-11-18", "story_key": "coatco-cost-per-wear",
+      "players": ["CoatCo"], "sectors": ["fashion"], "markets": ["Europe"], "theme_id": "TH4",
+      "sources": [{"name": "CoatCo", "url": "https://coatco.example.com/cost-per-wear", "origin": "CoatCo", "kind": "primary"}]
+    },
+    {
+      "id": "S10", "title": "Wide-leg dark denim returns to Warsaw boutique windows",
+      "url": "https://warsawstyle.example.org/denim",
+      "event_date": "2026-11-20", "first_seen": "2026-11-22", "story_key": "warsaw-dark-denim-windows",
+      "players": ["Warsaw Style Notes"], "sectors": ["fashion"], "markets": ["PL"], "theme_id": null,
+      "sources": [{"name": "Warsaw Style Notes", "url": "https://warsawstyle.example.org/denim", "origin": "Warsaw Style Notes"}]
+    }
+  ],
+  "incoming": [
+    {
+      "id": "N1", "title": "Studio Vistule utility trench now on pre-order",
+      "url": "https://www.studiovistule.example.com/pl/trench-utility/?utm_source=newsletter&utm_medium=email",
+      "event_date": "2026-11-14", "first_seen": "2026-11-25", "players": ["Studio Vistule"], "sectors": ["fashion"], "markets": ["PL"],
+      "sources": [{"name": "Studio Vistule newsletter", "url": "https://studiovistule.example.com/newsletter", "origin": "Studio Vistule", "kind": "primary"}]
+    },
+    {
+      "id": "N2", "title": "Atelier Nord launches lightweight unlined trench coat for spring",
+      "url": "https://fashionwire.example.org/atelier-nord-trench",
+      "event_date": "2026-11-04", "first_seen": "2026-11-25", "players": ["Atelier Nord"], "sectors": ["fashion"], "markets": ["FR"],
+      "sources": [{"name": "Fashion Wire FR", "url": "https://fashionwire.example.org/atelier-nord-trench", "origin": "Fashion Wire FR"}]
+    },
+    {
+      "id": "N3", "title": "Riva Concept opens its first store in Lyon",
+      "url": "https://rivaconcept.example.com/lyon",
+      "event_date": "2026-11-23", "first_seen": "2026-11-25", "story_key": "riva-concept-lyon-store", "players": ["Riva Concept"], "sectors": ["fashion"], "markets": ["FR"],
+      "sources": [{"name": "Riva Concept", "url": "https://rivaconcept.example.com/lyon", "origin": "Riva Concept", "kind": "primary"}]
+    }
+  ]
+}
