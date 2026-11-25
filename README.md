@@ -78,18 +78,35 @@ print(status.status, status.failed_tests)
 print(status.calculation(date(2026, 11, 25)))  # one line for the trend's calculation field
 ```
 
+## Notion template
+
+The whole tracker (five linked databases, two-way relations, rollups, the priority formula and eleven saved views) is defined in one file, [`schema.json`](src/trend_tracker/notion/schema.json), and built through the Notion API with no extra dependencies.
+
+```bash
+python -m trend_tracker.notion validate   # catch schema mistakes before touching Notion
+python -m trend_tracker.notion plan       # dry run: list every API call
+export NOTION_TOKEN=...                   # internal integration with access to the parent page
+python -m trend_tracker.notion build --parent "https://www.notion.so/Your-Page-<id>"
+```
+
+Field reference and relationship diagram: [docs/NOTION_TEMPLATE.md](docs/NOTION_TEMPLATE.md), generated from the schema so it can't drift.
+
+Select options (markets, audiences, product categories, languages) are examples. Edit them in `schema.json` before building.
+
 ## Layout
 
 ```
-src/trend_tracker/   models, config (thresholds), strength, dedupe, themes, status, serialization
-tests/               unit tests for every rule, plus a test that pins the sample dataset results
-examples/            made-up dataset and a demo script
-docs/METHODOLOGY.md  the full method
+src/trend_tracker/         models, config (thresholds), strength, dedupe, themes, status, serialization
+src/trend_tracker/notion/  schema.json, validator, builder and CLI for the Notion template
+tests/                     unit tests for every rule and the template, plus a test that pins the sample results
+examples/                  made-up dataset and a demo script
+docs/                      METHODOLOGY.md (the method), NOTION_TEMPLATE.md (field reference)
 ```
 
 ## Roadmap
 
-- [ ] Notion template as code: schema for the five linked databases and a script that builds them through the Notion API
+- [x] Notion template as code
+- [ ] Sync: read a live tracker, run the rules, write status, momentum and calculations back
 - [ ] Eval set: labelled example signals and a harness that scores an agent run against them
 - [ ] Multilingual field labels (the live tracker isn't in English, and its sources come in several languages)
 

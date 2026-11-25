@@ -1,0 +1,159 @@
+{
+  "name": "Trend signal tracker",
+  "version": "1.0",
+  "notes": "Select options are examples. Edit markets, audiences, product categories and languages to fit your brand before building. Options are written as [name, color].",
+  "databases": [
+    {
+      "key": "signals",
+      "title": "Signals",
+      "description": "One story = one row. Observation, interpretation and evidence for a single change.",
+      "properties": [
+        {"name": "Signal", "type": "title", "help": "Short headline of the change."},
+        {"name": "Event date", "type": "date", "help": "When the change happened."},
+        {"name": "First seen", "type": "date", "help": "Run date when the signal was first logged. Drives momentum."},
+        {"name": "Source", "type": "rich_text", "help": "Primary source name."},
+        {"name": "Link", "type": "url", "help": "Primary URL."},
+        {"name": "Also seen in", "type": "rich_text", "help": "Other independent sources for the same story."},
+        {"name": "What happened", "type": "rich_text", "help": "Observation: what the source shows. No interpretation."},
+        {"name": "Why it matters", "type": "rich_text", "help": "Interpretation for the brand."},
+        {"name": "Original wording", "type": "rich_text", "help": "Short key phrases or search terms in the source language."},
+        {"name": "English", "type": "rich_text", "help": "English rendering of the original wording."},
+        {"name": "Source language", "type": "select", "options": [["EN", "gray"], ["FR", "blue"], ["DE", "yellow"], ["ES", "orange"], ["IT", "green"], ["PL", "red"], ["Other", "default"]]},
+        {"name": "Market", "type": "multi_select", "help": "Geography of the evidence, not of the brand.", "options": [["France", "blue"], ["Germany", "yellow"], ["United Kingdom", "red"], ["Europe", "gray"], ["Global", "default"]]},
+        {"name": "Signal type", "type": "select", "options": [["Launch / collection", "pink"], ["Search demand", "blue"], ["Platform data", "red"], ["Editorial", "purple"], ["Consumer discussion", "yellow"], ["Research / report", "brown"], ["Retail / business", "green"], ["Culture / event", "orange"]]},
+        {"name": "Driver", "type": "multi_select", "help": "STEEP driver. Leave empty when unknown.", "options": [["Social", "pink"], ["Technological", "blue"], ["Economic", "green"], ["Environmental", "brown"], ["Political", "red"]]},
+        {"name": "Sector", "type": "multi_select", "options": [["Beauty", "pink"], ["Fashion", "purple"], ["Outfits", "blue"], ["Styling", "yellow"]]},
+        {"name": "Audience", "type": "multi_select", "help": "Only when the evidence identifies the audience.", "options": [["Premium 25+", "purple"], ["Premium under 25", "pink"], ["Diaspora shoppers", "yellow"]]},
+        {"name": "Product category", "type": "multi_select", "options": [["Coats", "brown"], ["Trench coats", "orange"], ["Short coats", "yellow"], ["Blazers", "blue"], ["Vests", "green"], ["Jeans", "gray"], ["Other", "default"]]},
+        {"name": "Platforms", "type": "multi_select", "help": "Where the story is confirmed. One platform = local signal; three or more = stronger.", "options": [["Pinterest", "red"], ["Google", "blue"], ["TikTok", "pink"], ["Instagram", "purple"], ["YouTube", "orange"], ["Media", "gray"], ["Forums / Reddit", "yellow"], ["Reviews", "green"], ["Brand sites", "brown"], ["Other", "default"]]},
+        {"name": "Strength", "type": "select", "help": "Corroboration of this story (see METHODOLOGY.md §3). Computed by score_strength().", "options": [["★", "gray"], ["★★", "yellow"], ["★★★", "orange"], ["★★★★", "red"], ["★★★★★", "purple"]]},
+        {"name": "Confidence", "type": "select", "help": "Kept separate from coverage volume.", "options": [["High", "green"], ["Medium", "yellow"], ["Low", "red"]]},
+        {"name": "Change %", "type": "number", "help": "Rate of change from primary data. Period and baseline go in Metric / baseline."},
+        {"name": "Metric / baseline", "type": "rich_text", "help": "Metric, geography, period, comparison and method."},
+        {"name": "Players", "type": "rich_text", "help": "Brands, people or institutions involved."},
+        {"name": "Limitations", "type": "rich_text", "help": "Seasonality, small sample, paid promotion and similar."},
+        {"name": "Red flags", "type": "multi_select", "help": "Risks to the signal's reliability.", "options": [["Single influencer", "red"], ["Paid promotion", "orange"], ["Syndication / one press release", "yellow"], ["Seasonality", "blue"], ["Small sample", "gray"], ["Platform dependence", "purple"], ["Cultural sensitivity", "pink"]]},
+        {"name": "Sentiment", "type": "select", "help": "Only for reviews and consumer discussion.", "options": [["Positive", "green"], ["Negative", "red"], ["Mixed", "yellow"], ["Neutral", "gray"]]},
+        {"name": "Story key", "type": "rich_text", "help": "Stable key for duplicate detection. One story = one key."},
+        {"name": "Evidence notes", "type": "rich_text", "help": "Dated follow-ups to this story."},
+        {"name": "Review", "type": "select", "help": "Approved by default; Draft only for rows a run flags as ambiguous.", "options": [["Draft", "orange"], ["Approved", "green"], ["Rejected", "gray"]]}
+      ]
+    },
+    {
+      "key": "themes",
+      "title": "Themes",
+      "description": "A pattern shared by 3+ separate signals from 3+ different players. Each theme belongs to one trend.",
+      "properties": [
+        {"name": "Theme", "type": "title"},
+        {"name": "Pattern", "type": "rich_text", "help": "What the signals have in common."},
+        {"name": "First seen", "type": "date"},
+        {"name": "Sector", "type": "multi_select", "options": [["Beauty", "pink"], ["Fashion", "purple"], ["Outfits", "blue"], ["Styling", "yellow"]]},
+        {"name": "Market", "type": "multi_select", "options": [["France", "blue"], ["Germany", "yellow"], ["United Kingdom", "red"], ["Europe", "gray"], ["Global", "default"]]},
+        {"name": "Stage", "type": "select", "help": "Lifecycle of the theme.", "options": [["Emerging", "blue"], ["Growing", "green"], ["Peak", "orange"], ["Saturating", "yellow"], ["Declining", "brown"]]},
+        {"name": "Stage rationale", "type": "rich_text", "help": "Weeks since first seen, platforms, pace, players, assessment date."},
+        {"name": "Fad or shift", "type": "select", "options": [["Likely fad", "red"], ["Likely lasting shift", "green"], ["Unknown", "gray"]]},
+        {"name": "Expected duration", "type": "select", "options": [["Under 1 season", "red"], ["1–2 seasons", "yellow"], ["2+ seasons", "green"]]},
+        {"name": "Action window", "type": "select", "help": "When the brand should act.", "options": [["Too early – monitor", "gray"], ["Act now", "green"], ["Needs own angle", "yellow"], ["Skip", "brown"]]},
+        {"name": "Review", "type": "select", "options": [["Draft", "orange"], ["Approved", "green"], ["Rejected", "gray"]]}
+      ]
+    },
+    {
+      "key": "trends",
+      "title": "Trends",
+      "description": "Cross-sector shifts in what people want or do. Created by people only; the agent may propose.",
+      "properties": [
+        {"name": "Trend", "type": "title"},
+        {"name": "Status", "type": "select", "help": "Computed by compute_status(). Confirmed and Fading are set by people only.", "options": [["Watching", "gray"], ["Strengthening", "blue"], ["Confirmed", "green"], ["Fading", "brown"]]},
+        {"name": "Momentum", "type": "select", "help": "Rising = 3+ new stories in 7 days. Falling is set by people only.", "options": [["Rising", "green"], ["Below rising threshold", "gray"], ["Falling", "red"]]},
+        {"name": "Hypothesis", "type": "rich_text", "help": "What may happen next and how to test it."},
+        {"name": "Content angle", "type": "rich_text"},
+        {"name": "What would disprove it", "type": "rich_text", "help": "Contradicting evidence and what would disprove the hypothesis."},
+        {"name": "First seen", "type": "date"},
+        {"name": "Status calculation", "type": "rich_text", "help": "Counts behind the current status and the date they were calculated."},
+        {"name": "Review", "type": "select", "options": [["Draft", "orange"], ["Approved", "green"], ["Rejected", "gray"]]}
+      ]
+    },
+    {
+      "key": "sources",
+      "title": "Sources",
+      "description": "Source register: access, research status and per-source checkpoints for each run.",
+      "properties": [
+        {"name": "Source", "type": "title"},
+        {"name": "Category", "type": "select", "options": [["Fashion publications", "purple"], ["Pinterest Trends", "red"], ["Google Trends", "blue"], ["TikTok Creative Center", "default"], ["Consumer discussion", "yellow"], ["Reviews", "orange"], ["Keyword Planner", "gray"], ["Search Console", "gray"], ["Competitors / retail", "pink"], ["Own catalogue & analytics", "green"], ["Platforms / research", "brown"]]},
+        {"name": "Link", "type": "url"},
+        {"name": "Market", "type": "multi_select", "options": [["France", "blue"], ["Germany", "yellow"], ["United Kingdom", "red"], ["Europe", "gray"], ["Global", "default"]]},
+        {"name": "Language", "type": "multi_select", "options": [["EN", "gray"], ["FR", "blue"], ["DE", "yellow"], ["ES", "orange"], ["IT", "green"], ["PL", "red"], ["Other", "default"]]},
+        {"name": "Access", "type": "select", "options": [["Confirmed", "green"], ["Needs checking", "yellow"], ["Unavailable", "red"], ["Paywalled", "orange"], ["Sign-in required", "purple"]]},
+        {"name": "Research", "type": "select", "options": [["Done", "green"], ["Pending", "yellow"]]},
+        {"name": "Origin", "type": "select", "help": "Whether the source was defined upfront or proposed by a run.", "options": [["Predefined", "gray"], ["New proposal", "blue"]]},
+        {"name": "Enabled", "type": "checkbox", "help": "Scanned in the daily run."},
+        {"name": "Checkpoint", "type": "rich_text", "help": "Last processed record or date for this source."},
+        {"name": "Last successful check", "type": "date"},
+        {"name": "Notes", "type": "rich_text"}
+      ]
+    },
+    {
+      "key": "opportunities",
+      "title": "Opportunities",
+      "description": "Tests the brand can run based on signals. Forecasts are hypotheses.",
+      "properties": [
+        {"name": "Opportunity", "type": "title"},
+        {"name": "Market", "type": "multi_select", "options": [["France", "blue"], ["Germany", "yellow"], ["United Kingdom", "red"]]},
+        {"name": "Audience", "type": "multi_select", "options": [["Premium 25+", "purple"], ["Premium under 25", "pink"], ["Diaspora shoppers", "yellow"]]},
+        {"name": "Need / search question", "type": "rich_text", "help": "The need or search question, in original phrases."},
+        {"name": "Product attributes", "type": "rich_text"},
+        {"name": "Product", "type": "url", "help": "Verified current product URL."},
+        {"name": "Commercial implication", "type": "rich_text"},
+        {"name": "Test", "type": "select", "options": [["Pinterest content", "red"], ["SEO / search", "blue"], ["Styling", "yellow"], ["Merchandising", "green"], ["Landing page", "purple"], ["Customer research", "gray"]]},
+        {"name": "Horizon", "type": "select", "options": [["Now", "red"], ["1–3 months", "orange"], ["3–6 months", "yellow"]]},
+        {"name": "Confidence", "type": "select", "options": [["High", "green"], ["Medium", "yellow"], ["Low", "red"]]},
+        {"name": "Assumptions", "type": "rich_text"},
+        {"name": "Risks", "type": "rich_text", "help": "What could break the hypothesis: season, routing, availability, cannibalisation."},
+        {"name": "Validation metric", "type": "rich_text"},
+        {"name": "Baseline", "type": "rich_text", "help": "Current value of the validation metric, period and source."},
+        {"name": "Success threshold", "type": "rich_text", "help": "Defined before the test starts."},
+        {"name": "Test start", "type": "date"},
+        {"name": "Review date", "type": "date"},
+        {"name": "Impact", "type": "number", "help": "1–5: potential commercial effect."},
+        {"name": "Brand fit", "type": "number", "help": "1–5: fit with assortment and positioning."},
+        {"name": "Ease of test", "type": "number", "help": "1–5: how fast and cheap the test is."},
+        {"name": "Timeliness", "type": "number", "help": "1–5: timing given theme stage and season."},
+        {"name": "Status", "type": "select", "options": [["Idea", "gray"], ["In progress", "blue"], ["Tested", "green"], ["Parked", "brown"]]},
+        {"name": "Result", "type": "rich_text"},
+        {"name": "Decision", "type": "select", "options": [["Scale", "green"], ["Iterate", "yellow"], ["Stop", "red"], ["Not enough data", "gray"]]},
+        {"name": "Review", "type": "select", "options": [["Draft", "orange"], ["Approved", "green"], ["Rejected", "gray"]]}
+      ]
+    }
+  ],
+  "relations": [
+    {"from": "signals", "name": "Theme", "to": "themes", "synced_name": "Signals", "help": "Empty = unsorted."},
+    {"from": "themes", "name": "Trend", "to": "trends", "synced_name": "Themes", "help": "Parent trend. Empty = needs review."},
+    {"from": "opportunities", "name": "Signals", "to": "signals", "synced_name": "Opportunities"}
+  ],
+  "rollups": [
+    {"database": "themes", "name": "Signal count", "relation": "Signals", "property": "Signal", "function": "count"},
+    {"database": "trends", "name": "Signal count", "relation": "Themes", "property": "Signals", "function": "unique", "help": "Unique signals across the trend's themes."},
+    {"database": "trends", "name": "Signals", "relation": "Themes", "property": "Signals", "function": "show_unique"}
+  ],
+  "formulas": [
+    {
+      "database": "opportunities",
+      "name": "Priority",
+      "expression": "if(empty(prop(\"Impact\")), 0, prop(\"Impact\")) + if(empty(prop(\"Brand fit\")), 0, prop(\"Brand fit\")) + if(empty(prop(\"Ease of test\")), 0, prop(\"Ease of test\")) + if(empty(prop(\"Timeliness\")), 0, prop(\"Timeliness\"))",
+      "help": "Sum of the four 1–5 scores, max 20. 0 = not scored."
+    }
+  ],
+  "views": [
+    {"database": "signals", "name": "All signals", "type": "table", "sorts": [{"property": "First seen", "direction": "descending"}]},
+    {"database": "signals", "name": "Unsorted", "type": "table", "filter": {"property": "Theme", "relation": {"is_empty": true}}, "sorts": [{"property": "First seen", "direction": "descending"}]},
+    {"database": "signals", "name": "By sector", "type": "board", "group_by": "Sector"},
+    {"database": "signals", "name": "Needs review", "type": "table", "filter": {"property": "Review", "select": {"equals": "Draft"}}},
+    {"database": "signals", "name": "Approved", "type": "table", "filter": {"property": "Review", "select": {"equals": "Approved"}}, "sorts": [{"property": "Event date", "direction": "descending"}]},
+    {"database": "themes", "name": "Themes by trend", "type": "table", "group_by": "Trend"},
+    {"database": "trends", "name": "Trends", "type": "table", "sorts": [{"property": "Signal count", "direction": "descending"}]},
+    {"database": "trends", "name": "Status board", "type": "board", "group_by": "Status"},
+    {"database": "sources", "name": "By category", "type": "table", "group_by": "Category"},
+    {"database": "opportunities", "name": "By horizon", "type": "board", "group_by": "Horizon"},
+    {"database": "opportunities", "name": "By priority", "type": "table", "sorts": [{"property": "Priority", "direction": "descending"}]}
+  ]
+}
